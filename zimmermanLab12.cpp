@@ -65,8 +65,8 @@ while(start){
 
     int userInput = 0;
     while (blah){
-		cout << "Please enter 1 to run DFS without a hash table, 2 to solve using DFS and a hash table, 3 to quit " <<
-			"and 4 to start over with a new starting board: " << endl;
+		cout << "Please enter 1 to run DFS without a hash table, 2 to solve using DFS and a hash table using linear"
+     << " hashing as well as Quadratic Hashing," << endl << "3 to quit and 4 to start over with a new starting board: " << endl;
 		cin >> userInput;
 
 		vector<vector<int>> mseq;
@@ -95,7 +95,7 @@ while(start){
 			else{
 				high_resolution_clock::time_point t2 = high_resolution_clock::now();
 		  	duration<double> time_span = duration_cast<duration<double>>(t2 - t1);
-			 	cout << "solve failed in" << time_span.count() << " seconds" << endl;
+			 	cout << "DFS with no hashing solve failed in" << time_span.count() << " seconds" << endl;
 			}
 	}
 
@@ -110,10 +110,22 @@ while(start){
 
 			high_resolution_clock::time_point t2 = high_resolution_clock::now();
 		  duration<double> time_span = duration_cast<duration<double>>(t2 - t1);
-			cout << "solution using linear hash table with starting size of 100,003: " << endl;
+			cout << "solution using linear hash table: " << endl;
 			printMoves(mseq);
 			cout << "CPU time to compute solution: " << time_span.count() << endl;
+      cout << "Search and Probe Data: " << endl;
+      h.printData();
 			cout << "--------------------------------------------------------------------------------" << endl << endl;;
+
+    }
+    else{
+      high_resolution_clock::time_point t2 = high_resolution_clock::now();
+      duration<double> time_span = duration_cast<duration<double>>(t2 - t1);
+      cout << endl << "No solution found using Linear Hashing" << endl;
+      cout << "CPU time to attempt to find solution: " << time_span.count() << endl;
+      cout << "Search and Probe Data: " << endl;
+      h.printData();
+      cout << "--------------------------------------------------------------------------------" << endl << endl;
 
     }
 
@@ -134,11 +146,11 @@ while(start){
     else{
       high_resolution_clock::time_point t4 = high_resolution_clock::now();
       duration<double> time_span1 = duration_cast<duration<double>>(t4 - t3);
-      cout << "No solution found" << endl;
+      cout << "No solution found using Quadratic Hashing" << endl;
       cout << "CPU time to attempt to find solution: " << time_span1.count() << endl;
       cout << "Search And Probe Data: " << endl;
       h2.printData();
-      cout << "--------------------------------------------------------------------------------" << endl << endl;;
+      cout << "--------------------------------------------------------------------------------" << endl << endl;
     }
 
 }
